@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Simple Add to Cart</title>
+  <style>
+    .product {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .cart-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+    a i {
+      float: right;
+      font-size: 1.5rem;
+      position: fixed;
+      right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./add_a_cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+  <h1>ADD TO CART</h1>
+  <div class="continer">
+    
+  </div>
+  <script>
+
+    let obj = [
+      {
+        img: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/f8bc2c70b30940a7acda118f6fdde902_9366/Switch_Run_Running_Shoes_Black_IF5720_01_standard.jpg',
+        name: 'Adidas Men Trainers Runfalcon 5 Running Shoes - $200',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://www.campusshoes.com/cdn/shop/products/DECCAN-6G-827-BLK-RED_2.jpg?v=1670326315',
+        name: 'Campus Mens Black Running Shoes - $150',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/05856ac7-0129-4395-bd6e-2fe2669025fb/custom-nike-dunk-low-by-you-su24.png',
+        name: 'Nike Dunk Low By You Custom Shoes- $35',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://images.puma.net/images/195569/26/sv01/fnd/IND/w/800/h/800/',
+        name: ' PUMA Softride  Running Shoes- $550',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://relaxofootwear.com/cdn/shop/files/SX0834G-GEPS-1_b28422d6-6759-4189-931f-282558be69ac.jpg?v=1730783563&width=800',
+        name: 'SPARX Running Shoes- $15',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://redtape.com/cdn/shop/files/RSO3891_1_8d11ab3e-f75b-4cb6-8f03-77e2a34a0049.jpg?v=1733986246',
+        name: 'Red Tape Sport Shoes for Men- $700',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://cdn-ejegf.nitrocdn.com/ptKzRmECffiRbAESDChJvypcTLFUXyUd/assets/images/optimized/rev-2342d4b/runwaycatalog.in/wp-content/uploads/2024/05/429446_02JP0_1284_001_100_0000_Light-Mens-Ace-embroidered-sneaker-330x330.jpg',
+        name: 'Gucci Mens Shoes- $50',
+        description: 'Description: A premium product with excellent features.'
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-tYjxScddEXeHCsgW0DlcYZ4oKtO5YCGWQ&s',
+        name: 'Air Jordan- $250',
+        description: 'Description: A premium product with excellent features.'
+      }
+    ]
+
+    obj.forEach((val) => {
+      let con=document.querySelector('.continer');
+    con.innerHTML+=`
+    
+    <div class="product">
+      <img
+        src="${val.img}"
+        alt="Product 2 Image" class="product-image">
+      <h2>${val.name}</h2>
+      <p>${val.description}</p>
+     <button onclick="senddata('${val.img}','${val.name}','${val.description}')">Add to Cart</button>
+    </div>
+    `
+    });
+
+    let arr=[];
+    function senddata(img,name,description){
+      arr.push({img,name,description})
+      localStorage.setItem('product',JSON.stringify(arr));
+    }
+
+  </script>
+</body>
+
+</html>
